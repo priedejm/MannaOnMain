@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-background text-foreground antialiased;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+.product-card {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Add styles for the mega menu */
+@utility mega-menu-link {
+  @apply text-sm text-gray-700 hover:text-primary transition-colors;
+  
+  &:hover {
+    transform: translateX(2px);
+  }
+}
+
+@utility category-heading {
+  @apply font-semibold text-primary mb-3 pb-1 border-b border-gray-100 inline-block;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 2px;
+    background-color: theme('colors.primary.DEFAULT');
+    margin-top: 4px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}
